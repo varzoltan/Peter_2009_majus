@@ -71,15 +71,48 @@ namespace Peter_2009_majus
 
             //5.feladat
             Console.WriteLine("\n5.feladat");
-            int emberrel_felefele = 0;
+            int emberrel_felefele = 0, utasnelkul_felfele = 0;
             for (int i = 0;i<lista.Count()-1;i++)
             {
                 if (lista[i].induloszint < lista[i].celszint)
                 {
                     emberrel_felefele++;
                 }
+                if (lista[i].celszint < lista[i+1].induloszint)
+                {
+                    utasnelkul_felfele++;
+                }
+            }
+            if (lista.Last().induloszint < lista[lista.Count()-1].celszint)
+            {
+                emberrel_felefele++;
+            }
+            if (liftkezdet < lista.First().induloszint)
+            {
+                utasnelkul_felfele++;
             }
             Console.WriteLine($"A lift emberrel felefelé {emberrel_felefele}-szer ment!");
+            Console.WriteLine($"A lift utas nélkül felefelé {utasnelkul_felfele}-szer ment!");
+
+            //6.feladat
+            Console.WriteLine("\n6.feladat");
+            //Olvassuk be a csapatszámot: 2.sorban van
+            int csapatszam = int.Parse(File.ReadLines("igeny.txt").ElementAt(1));
+            for (int i = 1;i<=csapatszam;i++)
+            {
+                bool volt = false;
+                for (int j = 0;j<lista.Count();j++)
+                {
+                    if (i == lista[j].csapat)
+                    {
+                        volt = true;
+                    }
+                }
+                if (!volt)
+                {
+                    Console.Write($"{i} ");
+                }
+            }
             Console.ReadKey();
         }
     }
