@@ -113,6 +113,29 @@ namespace Peter_2009_majus
                     Console.Write($"{i} ");
                 }
             }
+
+            //7.feladat
+            Console.WriteLine("\n\n7.feladat");
+            Random r = new Random();
+            int csapat = r.Next(1,csapatszam+1);
+            var csapatlista = lista.Where(x => x.csapat == csapat);
+            /*foreach (var i in csapatlista)
+            {
+                Console.WriteLine($"{i.ora} {i.perc} {i.masodperc} {i.csapat} {i.induloszint} {i.celszint}");
+            }*/
+            bool csal = true;
+            for (int i = 0;i<csapatlista.Count()-1;i++)
+            {
+                if (csapatlista.ElementAt(i).celszint != csapatlista.ElementAt(i+1).induloszint)
+                {
+                    Console.WriteLine($"A {csapat}-as csapat {csapatlista.ElementAt(i).celszint}-ről gyalog ment a {csapatlista.ElementAt(i + 1).induloszint}-re");
+                    csal = false;
+                }
+            }
+            if (csal)
+            {
+                Console.WriteLine($"Nem bizonyítható szabálytalanság");
+            }
             Console.ReadKey();
         }
     }
