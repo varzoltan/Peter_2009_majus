@@ -136,6 +136,27 @@ namespace Peter_2009_majus
             {
                 Console.WriteLine($"Nem bizonyítható szabálytalanság");
             }
+
+            //8.feladat
+            StreamWriter ir = new StreamWriter("blokkol.txt");
+            foreach (var i in csapatlista)
+            {
+                Console.WriteLine($"Indulási emelet: {i.induloszint}");
+                ir.WriteLine($"Indulási emelet: {i.induloszint}");
+                Console.WriteLine($"Célemelet: {i.celszint}");
+                ir.WriteLine($"Célemelet: {i.celszint}");
+                Console.Write("Kérem adja meg a feladat kódját (1-99): ");
+                string feladatkod = Console.ReadLine();
+                ir.WriteLine($"Feladatkód: {feladatkod}");
+                Console.WriteLine($"Befejezés ideje: {i.ora}:{i.perc}:{i.masodperc}");
+                ir.WriteLine($"Befejezés ideje: {i.ora}:{i.perc}:{i.masodperc}");
+                Console.Write("Sikeresség: ");
+                string sikeresseg = Console.ReadLine();
+                ir.WriteLine($"Sikeresség: {sikeresseg}");
+                Console.WriteLine("-----");
+                ir.WriteLine("-----");
+            }
+            ir.Close();
             Console.ReadKey();
         }
     }
